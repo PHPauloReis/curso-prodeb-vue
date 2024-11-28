@@ -78,6 +78,10 @@ export default {
     methods: {
         incluirTime() {
             this.timeList.push(this.timeAtual)
+            this.incrementarCounter()
+        },
+        incrementarCounter() {
+            this.state.increments()
         }
     }
 }
