@@ -4,9 +4,9 @@
 
   <BandeiraComponente />
 
-  <BotaoComponente />
-  <BotaoComponente :buttonClass="'active'" texto="Gabriel" />
-  <BotaoComponente :buttonClass="'danger'" texto="Sérgio" />
+  <BotaoComponente @cliquesDemais="mostrarMensagem" />
+  <BotaoComponente @cliquesDemais="mostrarMensagem" :buttonClass="'active'" texto="Gabriel" />
+  <BotaoComponente @cliquesDemais="mostrarMensagem" :buttonClass="'danger'" texto="Sérgio" />
   
   <TimeList title="Time mais legais" :times="times" />
   <TimeList title="Times barriados" :times="timesBarriados" />
@@ -46,6 +46,11 @@ export default {
       mensagem: 'Hello From Prodeb Novamente!',
       times: [],
       timesBarriados: []
+    }
+  },
+  methods: {
+    mostrarMensagem() {
+      alert('Você tá clicando muito')
     }
   }
 }

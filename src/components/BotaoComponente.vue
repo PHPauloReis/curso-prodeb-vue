@@ -1,5 +1,5 @@
 <template>
-    <div class="btn" :class="buttonStyle">{{ textoBotao }}</div>
+    <div @click="incrementar" class="btn" :class="buttonStyle">{{ numeroDeCliques }} {{ textoBotao }}</div>
 </template>
 
 <style>
@@ -28,7 +28,7 @@
 }
 
 .btn {
-    width: 116px;
+    width: 250px;
     height: 56px;
     display: flex;
     align-items: center;
@@ -65,12 +65,26 @@ export default {
         buttonClass: String,
         texto: String
     },
+    data() {
+        return {
+            numeroDeCliques: 0
+        }
+    },
     computed: {
         buttonStyle() {
             return this.buttonClass ?? 'default'
         },
         textoBotao() {
             return this.texto ?? 'Teste'
+        }
+    },
+    methods: {
+        incrementar() {
+            this.numeroDeCliques++
+
+            if (this.numeroDeCliques > 5) {
+                this.$emit('cliquesDemais')
+            }
         }
     }
 }
